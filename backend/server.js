@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const authrouter = require("./routes/auth");
+const interviewRoutes = require("./routes/interview");
 app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("COnnected Db"))
