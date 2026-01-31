@@ -1,22 +1,22 @@
 const express = require("express");
-const router = express.Router();
 const comments = require("../models/comments");
 const middleware = require("../middlewares/authMiddleware");
 
+const router = express.Router({ mergeParams: true });
 const Interview = require("../models/InterviewExperience")
-
 router.post("/", middleware, async (req, res) => {
   try {
     const { text } = req.body;
     if (!text) {
       return res.status(400).json({ message: "Comment text is required" });
     }
-
+    
+ 
     const interview = await Interview.findById(req.params.id);
     if (!interview) {
       return res.status(404).json({ message: "Interview not found" });
     }
-
+    console.log(interview);
     const comment = await comments.create({
       interviewId: req.params.id,
       userId: req.userId,

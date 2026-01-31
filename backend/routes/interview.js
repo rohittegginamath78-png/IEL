@@ -5,7 +5,7 @@ const commentRoutes = require("./comments")
 const router = express.Router({ mergeParams: true });
 
 //create post
-router.put("/", middleware, async (req, res) => {
+router.post("/", middleware, async (req, res) => {
   try {
     const interview = await Interview.create({
       ...req.body,
@@ -61,7 +61,7 @@ router.delete("/:id", middleware, async (req, res) => {
     res.status(500).json({ message: "delete route problem" });
   }
 });
-router.post("/:id" ,middleware , async(req, res)=>{
+router.put("/:id" ,middleware , async(req, res)=>{
   try{
     
   const id = req.params.id;
