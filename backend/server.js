@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 5000;
 app.get("/", (req , res)=>{
     res.send("server running")
 })
+
 app.use("/auth" , authrouter)
+app.use("/interviews" , interviewRoutes)
 app.listen(PORT, ()=>{
     console.log(`RUnning on http://localhost:${PORT}`);
 })
